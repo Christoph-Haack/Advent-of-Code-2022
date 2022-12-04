@@ -5,33 +5,26 @@
 #include <vector>
 using namespace std;
 
+//for detailed comments view main.cpp of the day04
+//difference is just between the check if the ranges overlap instead of cheking if they are inside each other
+
 int main(){
-
-    printf("Code is running :)  \n");
-
+    //printf("Code is running :)  \n");
     int temp_int, total_score, delimiter_pos, end_pos, first_pos, second_pos, first_int, second_int, third_int, fourth_int, counter, overlaping;
     string first_number, second_number, third_number, fourth_number;
     temp_int = 0;
     counter = 1;
     total_score = 0;
-    
-    
     fstream inputfile;
     inputfile.open("input.txt",ios::in);
     if(inputfile.is_open()){
         string current_line;
-        printf("file is open and read \n");
+        //printf("file is open and read \n");
         while(getline(inputfile, current_line)){
-            cout << current_line << "\n";
-
+            //cout << current_line << "\n";
         delimiter_pos = current_line.find(',');
         end_pos = current_line.length();
         //cout << "The end is at pos " << end_pos << "\n";
-
-        //check if the first number is in the range of the seconf half
-        //do the same for the second number
-        //if both are true it overlaps
-
         first_pos = current_line.find('-');
         second_pos = current_line.find('-', first_pos +1);
         //cout << first_pos << "   " << second_pos << "\n";
@@ -96,22 +89,16 @@ int main(){
             }
         }    
         if(overlaping == 0){
-            cout << "NOT OVERLAPING \n \n";
+            //cout << "NOT OVERLAPING \n \n";
         }
         
         counter = counter +1;
         overlaping = 0;
         //cout << "LINE BREAK...\n\n";
         }
-    
-
     }
-
-
-
-
     inputfile.close();
-    cout << "Lines read " << counter -1 << "\n";
+    //cout << "Lines read " << counter -1 << "\n";
     cout << "The total score is " << total_score << "\n \n \n";
     return 0;
 }

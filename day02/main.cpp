@@ -7,14 +7,16 @@ using namespace std;
 
 
 int main(){
-
-    printf("Code is running :)  \n");
-
+    //printf("Code is running :)  \n");
     int temp_int, total_score;
     temp_int = 0;
     total_score = 0;
 
     /*
+
+    //Using of a Map to convert the string of the two distinctive characters to one of 9 resu´lts, which are precalculated
+    //The first nine are for the 1. half of the exercise
+
     map<string,int>scenario;
     scenario.insert({"A X",4});     //rock rock 1 tie 3 = 4
     scenario.insert({"B X",1});     //paper rock 1 loss 0 = 1  
@@ -26,6 +28,8 @@ int main(){
     scenario.insert({"B Z",9});     //paper scissor 3 win 6 = 9
     scenario.insert({"C Z",6});     //scissor scissor 3 tie 3 = 6
     */
+
+   //the next nine are for the 2 half of the exercise
 
     map<string,int>scenario;
     scenario.insert({"A X",3});     //rock scissor 3 
@@ -39,31 +43,19 @@ int main(){
     scenario.insert({"C Z",7});     //scissor rock 1 win 6 = 7
 
     fstream inputfile;
-    inputfile.open("input.txt",ios::in);
-    if(inputfile.is_open()){
+    inputfile.open("input.txt",ios::in);        //file opening
+    if(inputfile.is_open()){        //checking if file is open
         string current_line;
         printf("file is open and read \n");
-        while(getline(inputfile, current_line)){
-            cout << current_line << "\n";
-
-            temp_int = scenario.at(current_line);
-            printf("%d \n", temp_int);
-            total_score = total_score + temp_int;
-            printf("new score %d \n", total_score);
-
-
-            
-
-
-
-
-
+        while(getline(inputfile, current_line)){    //getting the current line
+            //cout << current_line << "\n";
+            temp_int = scenario.at(current_line);   //looking up the int value of the map for using the current line as the key
+            //printf("%d \n", temp_int);
+            total_score = total_score + temp_int;   //adding the value to the sum, which is total score
+            //printf("new score %d \n", total_score); //printing temp result
         }
     }
-
-
-    printf("The answer is %d \n ", total_score);
-
-    inputfile.close();
+    printf("The answer is %d \n ", total_score);    //printing total result
+    inputfile.close();  //closing file
     return 0;
 };
